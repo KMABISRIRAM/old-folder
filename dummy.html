@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgba(224, 123, 7, 0.801);
+        }
+ #product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+} 
+#previous-button, #next-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: lawngreen;
+  height: 32px;
+  width: 100px;
+  color: navy;
+}
+
+</style>
+<body>
+    <button id="previous-button">Previous</button>
+    <button id="next-button">Next</button>
+    <div id="product-list">
+     
+    </div>
+  </div>
+<script>
+let currentIndex = 0;
+async function getProducts() {
+  const response = await fetch("http://dummyjson.com/products",);
+  const data = await response.json();
+  return data.products;
+}
+
+getProducts().then(products => {
+    const previousButton = document.getElementById('previous-button');
+    const nextButton = document.getElementById('next-button');
+    const productList = document.getElementById('product-list');
+  
+
+  previousButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + products.length) % products.length;
+    displayProduct(products[currentIndex]);
+  });
+
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) ;
+    displayProduct(products[currentIndex]);
+  });
+  
+function displayProduct(product) {
+  productList.innerHTML = `
+    <li>
+      <img src="${product.thumbnail}" >
+      <p>Title:${product.title}</p>
+      <p>Item Number: ${product.id}</p>
+      <p>Price: ${product.price}</p>
+      <p>Description: ${product.description}</p>
+    </li>
+`;
+}
+displayProduct(products[currentIndex]);
+});
+</script>
+</body>
+</html>

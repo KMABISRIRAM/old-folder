@@ -1,0 +1,36 @@
+// {
+//   "posts":[
+//     {
+//       "id":"1",
+//       "title" :"post 1",
+//       "content" :"this is the first post"
+//     }
+//   ]
+// } ,
+// {
+//   "posts":[
+//     {
+//       "id":"2",
+//       "title" :"post 2",
+//       "content" :"this is the second post"  
+//     }
+//   ]
+// }
+{
+  "product":[
+    {
+      "Item no":"1",
+      "title" :"Essence Mascara Lash Princess",
+      "Descripition" :"this"
+    }
+  ]
+},
+{
+  "product":[
+    {
+      "Item no":"2",
+      "title" :"Essence Mascara Lash Princess",
+      "Descripition" :"this"
+    }
+  ]
+}
